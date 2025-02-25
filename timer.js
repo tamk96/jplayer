@@ -53,35 +53,8 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// Hàm khởi tạo giao diện trong #audioTimerContainer
+// Hàm xử lý hẹn giờ
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("audioTimerContainer");
-
-    if (container) {
-        container.innerHTML = `
-            <div class="audio-timer-container">
-                <div class="audio-timer-controls">
-                    <select id="audioTimer">
-                        <option value="1">1 phút</option>
-                        <option value="5">5 phút</option>
-                        <option value="10">10 phút</option>
-                        <option value="30">30 phút</option>
-                        <option value="60">1 giờ</option>  
-                        <option value="90">1h30</option> 
-                        <option value="120">2 giờ</option>
-                    </select>
-                    <button onclick="startCountdown()" class="btn start-btn">
-                        <i class="fas fa-clock"></i> Hẹn giờ
-                    </button>
-                    <button onclick="cancelCountdown()" id="cancelBtn" class="btn cancel-btn">
-                        <i class="fas fa-times"></i> Hủy
-                    </button>
-                </div>
-                <p id="countdown"></p>
-            </div>
-        `;
-    }
-
     var countdownDisplay = document.getElementById("countdown");
     var cancelBtn = document.getElementById("cancelBtn");
     var countdown;
