@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var cancelBtn = document.getElementById("cancelBtn");
     var countdown;
     var timerValue;
-    var audioPlayer = document.getElementById("zingaudioplayer"); // Trình phát Truyện Audio
 
+    // Bắt đầu hẹn giờ
     window.startCountdown = function () {
         clearInterval(countdown);
         timerValue = parseInt(document.getElementById("audioTimer").value) * 60;
@@ -105,12 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (timerValue <= 0) {
             clearInterval(countdown);
-            countdownDisplay.innerHTML = `<i class="fas fa-stop-circle"></i> Dừng Truyện!`;
-            cancelBtn.style.display = "none";
-            if (audioPlayer) audioPlayer.jPlayer("pause");
+            countdownDisplay.innerHTML = `<i class="fas fa-redo"></i> Đang làm mới trang...`;
+            setTimeout(() => location.reload(), 2000); // Làm mới sau 2 giây
         }
     }
 
+    // Hủy hẹn giờ
     window.cancelCountdown = function () {
         clearInterval(countdown);
         countdownDisplay.innerHTML = `<i class="fas fa-pause-circle"></i> Đã hủy`;
