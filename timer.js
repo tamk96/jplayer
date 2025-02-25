@@ -81,12 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
-    var countdownDisplay = document.getElementById("countdown");
-    var cancelBtn = document.getElementById("cancelBtn");
-    var countdown;
-    var timerValue;
+    let countdownDisplay = document.getElementById("countdown");
+    let cancelBtn = document.getElementById("cancelBtn");
+    let countdown;
+    let timerValue;
 
-    // Bắt đầu hẹn giờ
     window.startCountdown = function () {
         clearInterval(countdown);
         timerValue = parseInt(document.getElementById("audioTimer").value) * 60;
@@ -99,18 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateCountdown() {
         timerValue--;
-        var minutes = Math.floor(timerValue / 60);
-        var seconds = timerValue % 60;
+        let minutes = Math.floor(timerValue / 60);
+        let seconds = timerValue % 60;
         countdownDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> ${minutes} phút ${seconds < 10 ? '0' : ''}${seconds} giây`;
 
         if (timerValue <= 0) {
             clearInterval(countdown);
-            countdownDisplay.innerHTML = `<i class="fas fa-redo"></i> Đang làm mới trang...`;
-            setTimeout(() => location.reload(), 2000); // Làm mới sau 2 giây
+            countdownDisplay.innerHTML = `<i class="fas fa-sync-alt"></i> Đang làm mới trang...`;
+            cancelBtn.style.display = "none";
+            setTimeout(() => location.reload(), 2000); // Làm mới trang sau 2 giây
         }
     }
 
-    // Hủy hẹn giờ
     window.cancelCountdown = function () {
         clearInterval(countdown);
         countdownDisplay.innerHTML = `<i class="fas fa-pause-circle"></i> Đã hủy`;
